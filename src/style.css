@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: 50px 1fr;
+}
+
+#top-bar {
+  background-color: rgb(160, 160, 160);
+  grid-column: 1 / -1;
+}
+
+#projects {
+  background-color: rgb(100, 100, 100);
+  grid-row: 2 / -1;
+}
+
+#board {
+  background-color: rgb(73, 73, 73);
+  grid-column: 2 / -1;
+  grid-row: 2 / -1;
+}

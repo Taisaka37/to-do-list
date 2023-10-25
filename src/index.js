@@ -3,16 +3,32 @@
 const projectsUpperContainer = document.querySelector('[data-projects]')
 const newProjectForm = document.querySelector('[data-new-project-form]')
 const newProjectInput = document.querySelector('[data-new-project-input]')
-let projects = [{
+
+const LOCAL_STORAGE_PROJECT_KEY = 'task.projects'
+const LOCAL_STORAGE_SELECTED_PROJECT_ID_KEY = 'task.selectedProjectId'
+
+let projects = JSON.parse(localStorage.getItem(LOCAL_STORAGE_PROJECT_KEY)) || [{
   id: 1,
-  name: 'Inbox'
+  name: 'Inbox',
+  tasks: []
 }, {
   id: 2,
-  name: 'Today'
+  name: 'Today',
+  tasks: []
 }, {
   id: 3,
-  name: 'Upcoming'
+  name: 'Upcoming',
+  tasks: []
 }];
+
+let selectedProjectId = localStorage.getItem(LOCAL_STORAGE_SELECTED_PROJECT_ID_KEY)
+
+projectsUpperContainer.addEventListener('click', e => {
+  if (e.target.className === 'projects-container') {
+    selectedProjectId = e.target.dataset.projectId
+    saveAndRender()
+  }
+})
 
 newProjectForm.addEventListener('submit', e => {
   e.preventDefault()
@@ -21,19 +37,31 @@ newProjectForm.addEventListener('submit', e => {
   const project = createProject(projectName)
   newProjectInput.value = null
   projects.push(project)
-  render()
+  saveAndRender()
 })
 
 function createProject(name) {
   return { id: Date.now().toString(), name, tasks: []}
 }
 
+function saveAndRender() {
+  save()
+  render()
+}
+
+function save() {
+  localStorage.setItem(LOCAL_STORAGE_PROJECT_KEY, JSON.stringify(projects))
+  localStorage.setItem(LOCAL_STORAGE_SELECTED_PROJECT_ID_KEY, selectedProjectId)
+}
 function render() {
   clearElement(projectsUpperContainer)
     projects.forEach(project => {
     const projectsLowerContainer = document.createElement('div');
     const projectsElement = document.createElement('div');
     projectsLowerContainer.classList.add('projects-container');
+    if (project.id === selectedProjectId) {
+      projectsElement.classList.add('active-project')
+    }
     projectsUpperContainer.append(projectsLowerContainer);
     projectsLowerContainer.append(projectsElement);
     projectsElement.innerText = project.name;

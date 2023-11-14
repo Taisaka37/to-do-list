@@ -22,13 +22,23 @@ let projects = JSON.parse(localStorage.getItem(LOCAL_STORAGE_PROJECT_KEY)) || [{
 }];
 
 let selectedProjectId = localStorage.getItem(LOCAL_STORAGE_SELECTED_PROJECT_ID_KEY)
+console.log(selectedProjectId)
 
 projectsUpperContainer.addEventListener('click', e => {
   if (e.target.className === 'projects-container') {
-    selectedProjectId = e.target.dataset.projectId
+    selectedProjectId = e.target.querySelector('div').dataset.projectId          
+    console.log(selectedProjectId)
     saveAndRender()
+
   }
 })
+// const projectsContainer = document.querySelectorAll('.projects-container');
+// projectsContainer.forEach(project => {
+//   project.addEventListener('click', () => {
+//     document.querySelector('.active-project')?.classList.remove('active-project');
+//     project.classList.add('active-project')
+//   })
+// })
 
 newProjectForm.addEventListener('submit', e => {
   e.preventDefault()
@@ -40,7 +50,7 @@ newProjectForm.addEventListener('submit', e => {
   saveAndRender()
 })
 
-function createProject(name) {
+function createProject(name) { 
   return { id: Date.now().toString(), name, tasks: []}
 }
 
@@ -59,6 +69,7 @@ function render() {
     const projectsLowerContainer = document.createElement('div');
     const projectsElement = document.createElement('div');
     projectsLowerContainer.classList.add('projects-container');
+    projectsElement.classList.add('projects-element')
     if (project.id === selectedProjectId) {
       projectsElement.classList.add('active-project')
     }
@@ -66,8 +77,17 @@ function render() {
     projectsLowerContainer.append(projectsElement);
     projectsElement.innerText = project.name;
     projectsElement.dataset.projectId = project.id;
+    // console.log(projectsElement)
+    // projectsElement.addEventListener('click', () => {
+    //   document.querySelector('.active-project')?.classList.remove('active-project');
+    //   projectsElement.classList.add('active-project')
+    // })
 
   })
+}
+
+function addSwitchActive() {
+
 }
 
 function clearElement(element) {

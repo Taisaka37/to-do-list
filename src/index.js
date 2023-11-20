@@ -25,9 +25,10 @@ let selectedProjectId = localStorage.getItem(LOCAL_STORAGE_SELECTED_PROJECT_ID_K
 console.log(selectedProjectId)
 
 projectsUpperContainer.addEventListener('click', e => {
-  if (e.target.className === 'projects-container') {
+  if (e.target.className === 'projects-container' ) {
     selectedProjectId = e.target.querySelector('div').dataset.projectId          
     console.log(selectedProjectId)
+    console.log(projects)
     saveAndRender()
 
   }
@@ -70,7 +71,7 @@ function render() {
     const projectsElement = document.createElement('div');
     projectsLowerContainer.classList.add('projects-container');
     projectsElement.classList.add('projects-element')
-    if (project.id === selectedProjectId) {
+    if (project.id == selectedProjectId) {
       projectsElement.classList.add('active-project')
     }
     projectsUpperContainer.append(projectsLowerContainer);

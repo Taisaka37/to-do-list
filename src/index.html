@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <script src="../src/index.js" defer></script>
+    <link rel="stylesheet" href="../src/style.css">
+</head>
+<body>
+  <div class="content">
+    <div id="top-bar">
+    </div>
+    <div id="left-bar">
+      <div id="projects" data-projects>
+      </div>
+      <form action="" data-new-project-form id="project-form">
+        <input
+         type="text"
+         data-new-project-input>
+         <button>+</button>
+      </form>
+    </div>
+    <div id="board">
+        <div class="section" data-section>
+            <!-- <div id="board-header">Today</div> -->
+            <div id="task-board" data-board>
+                <div class="checkbox-container">
+                    <div>
+                        <input type="checkbox" id="cb1">
+                        <label for="cb1">Add sections within projects<br>Due: 7 January</label>
+                    </div>
+                    <button>X</button>
+                </div>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="cb2">
+                    <label for="cb2">Add tasks within projects<br>Due: 7 January</label>
+                </div>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="cb3">
+                    <label for="cb3">Make so things display<br>Due: 7 January</label>
+                </div>
+                <div class="checkbox-container">
+                    <div>
+                        <input type="checkbox" id="cb4">
+                        <label for="cb4">Added 4th thing</label>
+                    </div>
+                    <button>X</button>
+                </div>
+            </div>
+            <form action="" data-new-task-form id="task-form">
+              <div>
+                  <button>+</button>
+                  <input
+                   type="text"
+                   data-new-task-input>
+              </div>
+               <div class="side">
+                   <div class="vertical">
+                       <label for="dueDate">Due date:</label>
+                       <input type="date" id="dueDate" name="dueDate" data-dueDate-input>
+                   </div>
+                   <div class="vertical">
+                       <label for="priority">Priority:</label>
+                        <select name="priority" id="priority" data-priority-input>
+                            <!-- <option value="none" selected>None</option> -->
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                   </div>
+               </div>
+            </form>
+        </div>
+      <!-- <div class="section">
+        <div id="board-header">Today</div>
+        <div id="task-board">
+        <div class="checkbox-container">
+            <input type="checkbox" id="cb1">
+            <label for="cb1">Add sections within projects</label>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox" id="cb2">
+            <label for="cb2">Add tasks within projects</label>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox" id="cb3">
+            <label for="cb3">Make so things display</label>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox" id="cb3">
+            <label for="cb3">Added 4th thing</label>
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <div id="board-header">Today</div>
+        <div id="task-board">
+        <div class="checkbox-container">
+            <input type="checkbox" id="cb1">
+            <label for="cb1">Add sections within projects</label>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox" id="cb2">
+            <label for="cb2">Add tasks within projects</label>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox" id="cb3">
+            <label for="cb3">Make so things display</label>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox" id="cb3">
+            <label for="cb3">Added 4th thing</label>
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <div id="board-header">Today</div>
+        <div id="task-board">
+        <div class="checkbox-container">
+            <input type="checkbox" id="cb1">
+            <label for="cb1">Add sections within projects</label>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox" id="cb2">
+            <label for="cb2">Add tasks within projects</label>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox" id="cb3">
+            <label for="cb3">Make so things display</label>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox" id="cb3">
+            <label for="cb3">Added 4th thing</label>
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <div id="board-header">Today</div>
+        <div id="task-board">
+        <div class="checkbox-container">
+            <input type="checkbox" id="cb1">
+            <label for="cb1">Add sections within projects</label>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox" id="cb2">
+            <label for="cb2">Add tasks within projects</label>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox" id="cb3">
+            <label for="cb3">Make so things display</label>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox" id="cb3">
+            <label for="cb3">Added 4th thing</label>
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <div id="board-header">Today</div>
+        <div id="task-board">
+        <div class="checkbox-container">
+            <input type="checkbox" id="cb1">
+            <label for="cb1">Add sections within projects</label>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox" id="cb2">
+            <label for="cb2">Add tasks within projects</label>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox" id="cb3">
+            <label for="cb3">Make so things display</label>
+          </div>
+          <div class="checkbox-container">
+            <input type="checkbox" id="cb3">
+            <label for="cb3">Added 4th thing</label>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</body>
+</html>

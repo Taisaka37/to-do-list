@@ -6,6 +6,7 @@
   margin: 0;
   color: white;
   font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
 }
 
 .content {
@@ -16,26 +17,32 @@
 }
 
 #top-bar {
-  background-color: rgb(140, 140, 140);
+  background-color: rgb(100, 100, 100);
   grid-column: 1 / -1;
 }
 
 #left-bar {
-  background-color: rgb(100, 100, 100);
+  background-color: rgb(80, 80, 80);
   grid-row: 2 / -1;
 }
 
 #board {
-  background-color: rgb(73, 73, 73);
+  background-color: rgb(50, 50, 50);
   grid-column: 2 / -1;
   grid-row: 2 / -1;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.section {
+    margin: 4rem;
 }
 
 #projects img {
   height: 25px;
 }
 
-.projects-container {
+.projects-element {
   display: flex;
   align-items: center;
   gap: 5px;
@@ -45,7 +52,7 @@
   border-radius: 5px;
 }
 
-.projects-container:hover {
+.projects-element:hover {
   background-color: rgb(121, 121, 121);
 }
 
@@ -53,11 +60,17 @@
   padding-top: 0.75rem;
 }
 
-form {
+#project-form {
   display: flex;
   flex-direction: row-reverse;
   padding-right: 11px;
 }
+
+#task-form {
+    display: flex;
+    flex-direction: column;
+}
+
 
 input {
   background: transparent;
@@ -77,5 +90,92 @@ button {
 }
 
 .active-project {
-  color: black;
+  background-color: rgb(121, 121, 121);
+}
+
+.task-element, #board-header {
+  padding: 1rem;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.checkbox-container label {
+  cursor: pointer;
+  display: flex;
+}
+
+.checkbox-container input[type='checkbox'] {
+  cursor: pointer;
+  opacity: 0;
+  position: absolute;
+}
+
+.checkbox-container label::before {
+    content: '';
+    width: 1em;
+    height: 1em;
+    border-radius: 1em;
+    margin-right: .5em;
+    border: .1em solid gray;
+}
+
+.high-priority label::before {
+    border: .1em solid red
+}
+.mid-priority label::before {
+    border: .1em solid yellow
+}
+.low-priority label::before {
+    border: .1em solid lightblue
+}
+
+.checkbox-container label:hover::before,
+.checkbox-container input[type='checkbox']:hover + label::before
+ {
+    background-color: #35E07D;
+}
+
+.checkbox-container input[type='checkbox']:checked + label::before {
+    content: '\002714';
+    background-color: #27AE60;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.checkbox-container input[type='checkbox']:focus + label::before {
+    box-shadow: 0 0 20px black;
+}
+
+.checkbox-container input[type='checkbox']:disabled + label::before {
+    background-color: #ccc;
+    border-color: #999;
+}
+
+.vertical {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+}
+
+.side {
+    display: none;
+}
+
+.invis {
+    opacity: 0;
+}
+
+.invis:hover {
+    opacity: 1;
+}
+
+select {
+    opacity: 1;
+    background-color: rgb(50, 50, 50);
+    border: 1px solid gray;
 }
